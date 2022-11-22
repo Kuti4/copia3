@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from reglog import views as reglogin
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('register/', reglogin.register, name='register'),
+    path('login/', reglogin.login, name='login'),
 ]
