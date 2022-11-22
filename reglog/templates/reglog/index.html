@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +8,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Epilogue&family=Kelly+Slab&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-  <link href="css/index.css" rel="stylesheet">
-  <link href="css/dinamic.css" rel="stylesheet">
-  <link href="css/header.css" rel="stylesheet">
-  <link href="css/footer.css" rel="stylesheet">
-  <link href="css/section.css" rel="stylesheet">
-  <link href="css/media.css" rel="stylesheet">
+  <link href="{% static 'css/index.css' %}" rel="stylesheet">
+  <link href="{% static 'css/dinamic.css' %}" rel="stylesheet">
+  <link href="{% static 'css/header.css' %}" rel="stylesheet">
+  <link href="{% static 'css/footer.css' %}" rel="stylesheet">
+  <link href="{% static 'css/section.css' %}" rel="stylesheet">
+  <link href="{% static 'css/media.css' %}" rel="stylesheet">
   <title>ELITE TUNING</title>
 </head>
 <body>
@@ -135,7 +137,7 @@
           </div>
           <div class="border">
             <div class="items">
-              <img src="img/items_cubok.png" class="cubok" rel="cubok">
+              <img src="{% static 'img/items_cubok.png' %}" class="cubok" rel="cubok">
             </div>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -159,21 +161,21 @@
     </div>
     <div class="achievements">
       <div class="img_achievements">
-        <img src="img/car1.png" width="100%">
+        <img src="{% static 'img/car1.png' %}" width="100%">
         <div class="info_achievements">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
             Habitant tincidunt aliquam tincidunt pretium sodales.</p>
         </div>
       </div>
       <div class="img_achievements">
-        <img src="img/car2.png" width="100%">
+        <img src="{% static 'img/car2.png' %}" width="100%">
         <div class="info_achievements">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
             Habitant tincidunt aliquam tincidunt pretium sodales.</p>
         </div>
       </div>
       <div class="img_achievements">
-        <img src="img/car3.png" width="100%">
+        <img src="{% static 'img/car3.png' %}" width="100%">
         <div class="info_achievements">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
             Habitant tincidunt aliquam tincidunt pretium sodales.</p>
@@ -187,7 +189,7 @@
     <div class="git1">
     <div class="info_text">
       <div class="terms materials">
-        <img src="img/items_company.png">
+        <img src="{% static 'img/items_company.png' %}">
         <h3>Материалы от лучших компаний</h3>
       </div>
       <div>
@@ -205,7 +207,7 @@
     </div>
     <div class="info_text">
       <div class="terms masters">
-        <img src="img/items_Experienced_craftsmen.png">
+        <img src="{% static 'img/items_Experienced_craftsmen.png' %}">
         <h3>Опытные мастера</h3>
       </div>
       <div>
@@ -223,7 +225,7 @@
     </div>
     <div class="info_text">
       <div class="terms guarantee">
-        <img src="img/items_guarantee.png">
+        <img src="{% static 'img/items_guarantee.png' %}">
         <h3>Гарантия на все виды работы</h3>
       </div>
       <div>
@@ -242,8 +244,8 @@
     2022 © Est et viverra pellentesque pharetra lorem proin in. Vitae magna at tempus commodo.
   </p>
   <div class="social_network">
-    <img src="img/vk.png" width="30px" height="30px">
-    <img src="img/instagram.png" width="30px" height="30px">
+    <img src="{% static 'img/vk.png' %}" width="30px" height="30px">
+    <img src="{% static 'img/instagram.png' %}" width="30px" height="30px">
   </div>
 </div>
 </footer>

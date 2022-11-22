@@ -17,9 +17,13 @@ from django.contrib import admin
 from django.urls import path
 
 from reglog import views as reglogin
+from comments import views as comment
+from .views import index
 
 urlpatterns = [
+    path('', index),
     path('admin/', admin.site.urls),
     path('register/', reglogin.register, name='register'),
     path('login/', reglogin.login, name='login'),
+    path('comments/', comment.showcomments, name='comments')
 ]
