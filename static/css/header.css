@@ -1,0 +1,107 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color:  #1E1E1E;;
+}
+
+.intro {
+  background: url(../img/header_fon.jpg) center no-repeat;
+  width: 100%;
+  height: 100vh;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.header_fon {
+  width: 100%;
+  overflow: hidden;
+}
+
+.header_menu {
+  margin-top: 0px;
+  position: absolute;
+  display: flex;
+}
+.input a {
+  float: right;
+  margin-top: 5px;
+  font-size: 20px;
+  color: white;
+  padding: 10px;
+  background-color: #DB3138;
+}
+
+ul {
+  display: flex;
+}
+
+.header_menu li {
+  margin-right: 40px;
+  list-style-type: none;
+}
+
+.header_menu a,
+.social_networks a {
+  font-family: 'Kelly Slab';
+  font-size: 20px;
+}
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+
+.logo h1 {
+  margin: 0px;
+  color: #DB3138;
+  text-transform: uppercase;
+  font-size: 106px;
+  font-family: 'Bebas Neue', cursive;
+  text-align: center;
+}
+
+.logo p {
+  margin-top: 40px;
+  font-size: 26px;
+  text-align: center;
+
+}
+
+.direction_rhombus {
+  display: flex;
+}
+
+.direction_rhombus {
+  width: 110px;
+  padding: 15px 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rhombus {
+  width: 8px;
+  height: 8px;
+  margin: 0px 10px 0px 10px;
+  background-color: #DB3138;
+  transform: rotate(45deg);
+}
+
+
+.services_button {
+  margin-top: 60px;
+}
+
+.but {
+  display: block;
+  width: 180px;
+  height: 50px;
+  margin: 0px auto;
+  background-color: #DB3138;
+  border-radius: 10px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 26px;
+  text-align: center;
+  line-height: 50px;
+}
