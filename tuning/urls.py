@@ -19,11 +19,13 @@ from django.urls import path
 from reglog import views as reglogin
 from comments import views as comment
 from .views import index
+from django.contrib.auth import views as authViews
 
 urlpatterns = [
     path('', index),
     path('admin/', admin.site.urls),
     path('register/', reglogin.register, name='register'),
-    path('login/', reglogin.login, name='login'),
-    path('comments/', comment.showcomments, name='comments')
+    path('login/', authViews.LoginView.as_view(next_page='/'), name='login'),
+    path('comments/', comment.showcomments, name='comments'),
+    path('exit/', authViews.LogoutView.as_view(next_page='/'), name='exit'),
 ]

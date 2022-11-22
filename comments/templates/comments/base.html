@@ -10,14 +10,54 @@
     <link rel="stylesheet" href="{% static 'css/commentstyle.css' %}">
 </head>
 <body>
+    <header>
+        <div class="header_iner">
+          <div class="conteiner">
+            <div class="burger">
+              <span></span>
+            </div>
+              <div class="header_menu">
+                <nav>
+                  <ul>
+                    <li><a href="#">главная</a></li>
+                    <li><a href="services.html">наши услуги</a></li>
+                    <li><a href="#">о нас</a></li>
+                    <li><a href="{% url 'comments' %}">отзывы</a></li>
+                  </ul>
+                </nav>
+                <div class="input">
+                  <a href="LoginRegistration.html">вход</a>
+                </div>
+              </div>
+            </div>
+        </div>
+      </header>
     
+    <main>
     {% for comment in comments %}
         <div class="comment">
-            <h3>{{ comment.user.name }} </h3>
+            <h3>{{ comment.user }} </h3>
             <small>{{ comment.date }}</small>
             <p>{{ comment.text }}</p>
         </div>
     {% endfor %}
-    {% block write %}{% endblock %}
+    {% if user.is_authenticated %}
+        {% block write %}{% endblock %}
+    {% else %}
+        <p>Войдите чтобы оставить отзыв</p>
+    {% endif %}
+    </main>
+
+    <footer>
+        <div class="conteiner">
+        <p class="footer">
+          2022 © Est et viverra pellentesque pharetra lorem proin in. Vitae magna at tempus commodo.
+        </p>
+        <div class="social_network">
+          <img src="{% static 'img/vk.png' %}" width="30px" height="30px">
+          <img src="{% static 'img/instagram.png' %}" width="30px" height="30px">
+        </div>
+      </div>
+      </footer>
 </body>
 </html>

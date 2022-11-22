@@ -26,14 +26,19 @@
           <div class="header_menu">
             <nav>
               <ul>
-                <li><a href="index.html">главная</a></li>
+                <li><a href="{% url 'login' %}">главная</a></li>
                 <li><a href="services.html">наши услуги</a></li>
                 <li><a href="#">о нас</a></li>
-                <li><a href="#">отзывы</a></li>
+                <li><a href="{% url 'comments' %}">отзывы</a></li>
               </ul>
             </nav>
             <div class="input">
-              <a href="LoginRegistration.html">вход</a>
+              {% if user.is_authenticated %}
+                <p>{{ user }}</p>
+                <a href="{% url 'exit' %}">выйти</p>
+              {% else %}
+                <a href="{% url 'login' %}">вход</a>
+              {% endif %}
             </div>
           </div>
         </div>
