@@ -3,6 +3,7 @@ from django.contrib import messages
 from .forms import RegisterUserForm, LoginUserForm
 
 
+
 # def register(request):
 #     if request.method == 'POST':
 #         form = UserRegisterForm(request.POST)
@@ -14,7 +15,6 @@ from .forms import RegisterUserForm, LoginUserForm
 #         else:
 #             form = UserRegisterForm()
 #     return render(request, 'users/register.html', {'form': form})
-
 
 def register(request):
     if request.method == "POST":

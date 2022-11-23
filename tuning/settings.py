@@ -60,7 +60,9 @@ ROOT_URLCONF = 'tuning.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'comments/templates')],
+        'DIRS': [
+            BASE_DIR / "comments/templates",
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -1,7 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Comment
+from .forms import WriteCommentForm
 # Create your views here.
-def showcomments(request):
-    comments = Comment.objects.all()
 
-    return render(request, 'comments/base.html', {'comments' : comments})
+def showcomments(request):
+    comments = Comment.objects.all()[::-1]
+    form = WriteCommentForm(request.POST)
+    
+    if request.method == "POST":
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = request.user
+            comment.save()
+            return render(request, 'comments/writecomment.html', {'comments' : comments, 'form' : form})
+
+    else:
+        form = WriteCommentForm(request.POST)
+    return render(request, 'comments/writecomment.html', {'comments' : comments, 'form' : form})
