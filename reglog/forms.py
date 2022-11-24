@@ -10,24 +10,31 @@ def email_validate(value):
             params={'value': value},
         )  
 
-class RegisterUserForm(UserCreationForm):
-    username = forms.CharField(label='Имя', widget=forms.TextInput(attrs={'class': 'form-input'}))
-    email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class': 'form-input'}), validators=[email_validate])
-    password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
-    password2 = forms.CharField(label='Еще раз', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+class UserRegistrationForm(forms.ModelForm):
+    email = forms.EmailField(label='Почта', validators=[email_validate])
+    password = forms.CharField(label='Пароль', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Еще раз', widget=forms.PasswordInput)
 
     class Meta:
-      model = User
-      fields = ('username', 'email', 'password1', 'password2')
+        model = User
+        fields = ('username', 'email')
+        labels = {
+            'username' : 'Логин',
+            'email' : 'Почта',
+        }
+    def clean_password2(self):
+        cd = self.cleaned_data
+        if cd['password'] != cd['password2']:
+            raise forms.ValidationError('Passwords don\'t match.')
+        return cd['password2']
 
 
-class LoginUserForm(AuthenticationForm):
-    username = forms.CharField(label='Логин', widget=forms.TextInput(attrs={'class': 'form-input'}))
-    password = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+class LoginForm(forms.Form):
+    email = forms.EmailField(label='Логин')
+    password = forms.CharField(widget=forms.PasswordInput, label='Пароль')
 
-# class UserRegisterForm(UserCreationForm):
-#     email = forms.EmailField()
-
-#     class Meta:
-#         model = User
-#         fields = ['username', 'email', 'password1', 'password2']
+    class Meta:
+        model = User
+        labels = {
+            'email' : 'Почта',
+        }

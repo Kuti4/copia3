@@ -1,0 +1,10 @@
+{% extends 'reglog/loginbase.html' %}
+
+
+{% block content %}
+<button type="submit">Войти</button>
+<br>
+<a href="{% url 'register' %}">Зарегистрироваться</a>
+<br>
+<a href="{% url 'password_reset' %}">Забыл пароль</a>
+{% endblock %}

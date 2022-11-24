@@ -14,23 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
-from reglog import views as reglogin
-from comments import views as comment
-from .views import index
+from .views import index, services
 from django.contrib.auth import views as authViews
 
 urlpatterns = [
-    path('', index),
+    path('', include('comments.urls')),
+    path('', include('reglog.urls')),
+    path('', index, name='index'),
     path('admin/', admin.site.urls),
-    path('register/', reglogin.register, name='register'),
-    path('login/', authViews.LoginView.as_view(next_page='/'), name='login'),
-    path('comments/', comment.showcomments, name='comments'),
     path('exit/', authViews.LogoutView.as_view(next_page='/'), name='exit'),
-
-    path('password-reset/', authViews.PasswordResetView.as_view(), name='password_reset'),
-    path('password-reset/done/', authViews.PasswordResetDoneView.as_view(), name='password_reset_done'),
-    path('password-reset/confirm/(?P<uidb64>[-\w]+)/(?P<token>[-\w]+)/', authViews.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
-    path('password-reset/complete/', authViews.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+    path('services/', services, name='services'),
 ]

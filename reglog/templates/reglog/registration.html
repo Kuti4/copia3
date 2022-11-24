@@ -1,19 +1,8 @@
-{% extends "reglog/base.html" %}
+{% extends 'reglog/loginbase.html' %}
 
-{% block title  %} Регистрация {% endblock %}
 
 {% block content %}
-<div>
-    <form method="post">
-      {% csrf_token %}
-
-      {% for f in form %}
-        <p><label class="" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
-        <div class="">{{ f.errors }}</div>
-      {% endfor %}
-
-      <button type="submit">Регистрация</button>
-    </form>
-    <p>Есть аккаунт? <a href="{% url 'login' %}">Войти</a></p>
-</div>
+<button type="submit">Регистрация</button>
+<br>
+<a href="{% url 'login' %}">Есть аккаунт</a>
 {% endblock %}
