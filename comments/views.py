@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, HttpResponseRedirect
 from .models import Comment
 from .forms import WriteCommentForm
 # Create your views here.
@@ -12,8 +12,8 @@ def showcomments(request):
             comment = form.save(commit=False)
             comment.user = request.user
             comment.save()
-            return render(request, 'comments/writecomment.html', {'comments' : comments, 'form' : form})
 
+            return HttpResponseRedirect(request.path)
     else:
-        form = WriteCommentForm(request.POST)
+        form = WriteCommentForm()
     return render(request, 'comments/writecomment.html', {'comments' : comments, 'form' : form})

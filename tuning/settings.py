@@ -131,3 +131,10 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = 'login'
+
+EMAIL_USE_TLS = False  
+EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.mail.ru'  
+EMAIL_HOST_USER = 'tuning.2022@mail.ru'  
+EMAIL_HOST_PASSWORD = 'yER&cztuAY33'  
+EMAIL_PORT = 465

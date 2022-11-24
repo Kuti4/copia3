@@ -9,10 +9,11 @@
     <title>отзывы</title>
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/comstyle.css' %}">
 
 </head>
 <body>
-    <header>
+    <header style="height: 150px;">
         <div class="header_iner">
           <div class="conteiner">
             <div class="burger">
@@ -28,7 +29,12 @@
                   </ul>
                 </nav>
                 <div class="input">
-                  <a href="LoginRegistration.html">вход</a>
+                  {% if user.is_authenticated %}
+                    <p>{{ user }}</p>
+                    <a href="{% url 'exit' %}">выйти</a>
+                  {% else %}
+                    <a href="{% url 'login' %}">вход</a>
+                  {% endif %}
                 </div>
               </div>
             </div>
@@ -36,18 +42,19 @@
       </header>
     
     <main>
-    {% for comment in comments %}
-        <div class="comment">
-            <h3>{{ comment.user }} </h3>
-            <small>{{ comment.date }}</small>
-            <p>{{ comment.text }}</p>
-        </div>
-    {% endfor %}
-    {% if user.is_authenticated %}
+      {% if user.is_authenticated %}
       {% block content %}{% endblock %}
     {% else %}
         <p>Войдите чтобы оставить отзыв</p>
     {% endif %}
+    {% for comment in comments %}
+        <div class="comment" style="background-color: gray; width: 700px; margin: 0 auto; border-radius: 15px; padding-left: 10px;">
+            <p class="comment" style="display: inline;">{{ comment.user }} </p>
+            <small class="comment">{{ comment.date }}</small>
+            <p class="comment">{{ comment.text }}</p>
+        </div>
+    {% endfor %}
+
     </main>
 
     <footer>
