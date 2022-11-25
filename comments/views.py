@@ -12,7 +12,6 @@ def showcomments(request):
             comment = form.save(commit=False)
             comment.user = request.user
             comment.save()
-
             return HttpResponseRedirect(request.path)
     else:
         form = WriteCommentForm()

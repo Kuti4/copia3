@@ -9,6 +9,6 @@ urlpatterns = [
     path('login/', reglogin.user_login, name='login'),
     path('password-reset/', authViews.PasswordResetView.as_view(), name='password_reset'),
     path('password-reset/done/', authViews.PasswordResetDoneView.as_view(), name='password_reset_done'),
-    path('password-reset/confirm/(?P<uidb64>[-\w]+)/(?P<token>[-\w]+)/', authViews.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path('password-reset/<uidb64>/<token>/', authViews.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('password-reset/complete/', authViews.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
 ]

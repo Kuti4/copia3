@@ -1,15 +1,24 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
 from .forms import LoginForm, UserRegistrationForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, get_user_model
 
+
+def emailtousername(email):
+    UserModel = get_user_model()
+    try:
+        user = UserModel.objects.get(email=email)
+        return user.username
+    except UserModel.DoesNotExist:
+        return None
 
 def user_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            user = authenticate(username=cd['username'], password=cd['password'])
+            username = emailtousername(cd['email'])
+            user = authenticate(request, username=username, password=cd['password'])
             if user is not None:
                 login(request, user)
                 return render(request, 'reglog/index.html')

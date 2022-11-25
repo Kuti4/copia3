@@ -10,7 +10,15 @@ def email_validate(value):
             params={'value': value},
         )  
 
+def username_validate(value):
+    if len(value) < 1:
+        raise forms.ValidationError(
+            'Логин не может быть пустым',
+        )
+
+
 class UserRegistrationForm(forms.ModelForm):
+    username = forms.CharField(label='Логин')
     email = forms.EmailField(label='Почта', validators=[email_validate])
     password = forms.CharField(label='Пароль', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Еще раз', widget=forms.PasswordInput)
@@ -18,10 +26,6 @@ class UserRegistrationForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username', 'email')
-        labels = {
-            'username' : 'Логин',
-            'email' : 'Почта',
-        }
     def clean_password2(self):
         cd = self.cleaned_data
         if cd['password'] != cd['password2']:
@@ -30,7 +34,8 @@ class UserRegistrationForm(forms.ModelForm):
 
 
 class LoginForm(forms.Form):
-    email = forms.EmailField(label='Логин')
+    email = forms.EmailField(label='Почта')
+    #username = forms.CharField(label='Логин')
     password = forms.CharField(widget=forms.PasswordInput, label='Пароль')
 
     class Meta:
