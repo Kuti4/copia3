@@ -9,3 +9,6 @@ class WriteCommentForm(forms.ModelForm):
         widgets = {
             'text': forms.Textarea(),
         }
+
+class DeleteCommentForm(forms.Form):
+    text = forms.CharField()
